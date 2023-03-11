@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -8,19 +7,20 @@ use Spatie\Permission\Models\Role;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 
-class UsersController extends Controller
+class AdminUsersController extends Controller
 {
+
     /**
      * Display all users
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() 
     {
-
+        
         $users = User::latest()->paginate(10);
-
-        return view('users.index', compact('users'));
+        
+        return view('admins.index', compact('users'));
     }
 
     /**
@@ -28,9 +28,9 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create() 
     {
-        return view('users.create');
+        return view('admins.create');
     }
 
     /**
@@ -41,16 +41,16 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user, StoreUserRequest $request)
+    public function store(User $user, StoreUserRequest $request) 
     {
         //For demo purposes only. When creating user or inviting a user
         // you should create a generated random password and email it to the user
         $user->create(array_merge($request->validated(), [
-            'password' => 'test'
+            'password' => 'test' 
         ]));
 
-        return redirect()->route('users.index')
-            ->withSuccess(__('User created successfully.'));
+        return redirect()->route('admins.index')
+            ->withSuccess(__('Admin has succesfully created a user.'));
     }
 
     /**
@@ -60,7 +60,7 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $user) 
     {
         return view('users.show', [
             'user' => $user
@@ -74,13 +74,17 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function createScreenUser(User $user) 
     {
-        return view('users.edit', [
+
+   // dd('Here');
+
+        return view('admins.create', [
             'user' => $user,
             'userRole' => $user->roles->pluck('name')->toArray(),
             'roles' => Role::latest()->get()
         ]);
+      
     }
 
     /**
@@ -91,7 +95,7 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(User $user, UpdateUserRequest $request)
+    public function update(User $user, UpdateUserRequest $request) 
     {
         $user->update($request->validated());
 
@@ -108,7 +112,7 @@ class UsersController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $user) 
     {
         $user->delete();
 

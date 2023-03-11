@@ -51,6 +51,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          * User Routes
          */
         Route::group(['prefix' => 'users'], function() {
+            
             Route::get('/', 'UsersController@index')->name('users.index');
             Route::get('/create', 'UsersController@create')->name('users.create');
             Route::post('/create', 'UsersController@store')->name('users.store');
@@ -59,6 +60,21 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
             Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
         });
+
+  
+
+      /**
+         * Admin User Routes
+         */
+        Route::group(['prefix' => 'admins'], function() {
+            Route::get('/', 'AdminUsersController@index')->name('admins.index');
+            //Route::post('/create', 'AdminUsersController@store')->name('admins.store');
+           // Route::get('/create', 'AdminUsersController@createScreenUser')->name('admins.create');
+            Route::get('/create', 'AdminUsersController@createScreenUser')->name('users.show');
+            Route::post('/create', 'AdminUsersController@store')->name('admins.store');
+        });
+        
+
 
         /**
          * User Routes
