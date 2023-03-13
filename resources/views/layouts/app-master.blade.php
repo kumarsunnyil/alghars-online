@@ -9,42 +9,49 @@
     <title>Fixed top navbar example · Bootstrap v5.1</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{!! url('assets/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
+    {{-- <link href="{!! url('assets/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet"> --}}
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+<link rel="icon" type="image/png" sizes="32x32" href="{!! url('assets/images/favicon.png') !!}">
+    
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .float-right {
-        float: right;
-      }
-    </style>
+<!-- ADMIN LTE --> 
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{!! url('assets/plugins/fontawesome-free/css/all.min.css')!!}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{!! url('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')!!}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{!! url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css')!!}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{!! url('assets/plugins/jqvmap/jqvmap.min.css')!!}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{!! url('assets/dist/css/adminlte.min.css')!!}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{!! url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')!!}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{!! url('assets/plugins/daterangepicker/daterangepicker.css')!!}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{!! url('assets/plugins/summernote/summernote-bs4.min.css')!!}">
+<!-- ADMIN LTE --> 
 
     
-    <!-- Custom styles for this template -->
-    <link href="{!! url('assets/css/app.css') !!}" rel="stylesheet">
 </head>
 <body>
     
     @include('layouts.partials.navbar')
+    @include('layouts.partials.sidebar')
+    @include('layouts.partials.dashboard')
+    
 
     <main class="container mt-5">
         @yield('content')
     </main>
-
+{{-- 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
+    <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script> --}}
     
     @section("scripts")
 
